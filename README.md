@@ -92,7 +92,7 @@ Version Control: GitHub
 Design Tools: Figma / Whimsical (for UI Wireframes and Prototypes)
 
 Repository Structure
-ExcelerateHub/
+eceleratehub/
 ├── lib/
 │   ├── screens/
 │   ├── widgets/
@@ -103,7 +103,6 @@ ExcelerateHub/
 │   └── icons/
 ├── pubspec.yaml
 └── README.md
-
 
 
 Login and Registration Screens
