@@ -62,33 +62,22 @@ The app bridges the gap between learners and administrators—offering a user-fr
 
 ---
 
-## 🗂 Repository Structure  
-excelerate_hub/
-├── lib/
-│ ├── screens/
-│ ├── widgets/
-│ ├── models/
-│ └── services/
-├── assets/
-│ ├── images/
-│ └── icons/
-├── pubspec.yaml
-└── README.md
+## 👩‍💻 Team Members
 
-👩‍💻 Team Members
-No	Name	Role
-1	Rooman Gaffar	Flutter Developer
-2	Phidzaglima Ntanganedzeni	Flutter Developer
-3	Faisal Nawaz	Customer Experience
-4	Saurabh Rai	Customer Experience
-5	Tabassum Mim	Project Manager
-6	Ekene Martins Okoro	Team Lead
-7	Loay Adel	Assistant Team Lead
-8	Abdul-Quadir	UI/UX Designer
-9	Ayesha	Communications & Documentation Specialist
-10	Dhruv Parmar	Communications & Documentation Specialist
-11	Noorulain Rathore	Quality Analyst
-💬 Feedback & Contributions
+| No | Name | Role |
+|----|----------------------------|-------------------------------|
+| 1 | Rooman Gaffar | Flutter Developer |
+| 2 | Phidzaglima Ntanganedzeni | Flutter Developer |
+| 3 | Faisal Nawaz | Customer Experience |
+| 4 | Saurabh Rai | Customer Experience |
+| 5 | Tabassum Mim | Project Manager |
+| 6 | Ekene Martins Okoro | Team Lead |
+| 7 | Loay Adel | Assistant Team Lead |
+| 8 | Abdul-Quadir | UI/UX Designer |
+| 9 | Ayesha | Communications & Documentation Specialist |
+| 10 | Dhruv Parmar | Communications & Documentation Specialist |
+| 11 | Noorulain Rathore | Quality Analyst |
+
 
 We welcome contributions and suggestions from mentors, learners, and developers.
 If you’d like to improve the app, please open an issue or submit a pull request.
