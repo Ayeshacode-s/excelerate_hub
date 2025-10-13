@@ -91,18 +91,14 @@ Version Control: GitHub
 
 Design Tools: Figma / Whimsical (for UI Wireframes and Prototypes)
 
-Repository Structure
-eceleratehub/
-├── lib/
-│   ├── screens/
-│   ├── widgets/
-│   ├── models/
-│   └── services/
-├── assets/
-│   ├── images/
-│   └── icons/
-├── pubspec.yaml
-└── README.md
+excelerate_hub/
+  ├── lib/
+  ├── android/
+  ├── ios/
+  ├── assets/
+  ├── pubspec.yaml
+  ├── README.md
+  └── .gitignore
 
 
 Login and Registration Screens
