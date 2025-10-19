@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 📘 Excelerate Learning Hub  
 *A Cross-Platform Mobile App for Experiential Learning*  
 
@@ -166,4 +166,4 @@ By the end of the project, **Excelerate Hub** will demonstrate:
 - A structured GitHub repository with commits, setup guide, and visuals.  
 - Practical understanding of real-world app development workflows.
 
->>>>>>> ecb0895 (Updated Flutter screens and configuration files)
+
