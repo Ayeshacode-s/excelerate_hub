@@ -4,7 +4,7 @@ import 'package:excelerate_hub/screens/program_tab.dart';
 import 'package:flutter/material.dart';
 
 import 'home_tabs.dart';
-import 'profile_tab.dart'; // Add this import
+import 'profile_tab.dart'; 
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,10 +15,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    // We'll initialize these below with the callback
+   
   ];
 
-  // Callback function to change tabs
+  
   void _changeTab(int index) {
     setState(() {
       _currentIndex = index;
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize screens with the callback
+   
     _screens.addAll([
       HomeTab(onTabChange: _changeTab),
       ProgramsTab(),
