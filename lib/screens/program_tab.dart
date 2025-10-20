@@ -1,4 +1,6 @@
+import 'package:exclelerate_learning_hub/screens/program_listing_screen.dart';
 import 'package:flutter/material.dart';
+
 
 class ProgramsTab extends StatelessWidget {
   final List<Map<String, dynamic>> allPrograms = [
@@ -8,6 +10,12 @@ class ProgramsTab extends StatelessWidget {
       'duration': '12 weeks',
       'level': 'Intermediate',
       'icon': Icons.phone_android,
+      'color': Colors.purple,
+      'instructor': 'John Doe',
+      'rating': 4.8,
+      'students': 1247,
+      'price': '\$79.99',
+      'lessons': 12,
     },
     {
       'title': 'Digital Marketing',
@@ -15,6 +23,12 @@ class ProgramsTab extends StatelessWidget {
       'duration': '8 weeks',
       'level': 'Beginner',
       'icon': Icons.trending_up,
+      'color': Colors.pink,
+      'instructor': 'Jane Smith',
+      'rating': 4.6,
+      'students': 892,
+      'price': '\$69.99',
+      'lessons': 8,
     },
     {
       'title': 'Graphic Design',
@@ -22,55 +36,68 @@ class ProgramsTab extends StatelessWidget {
       'duration': '10 weeks',
       'level': 'All Levels',
       'icon': Icons.graphic_eq,
+      'color': Colors.deepPurple,
+      'instructor': 'Mike Johnson',
+      'rating': 4.9,
+      'students': 1563,
+      'price': '\$89.99',
+      'lessons': 10,
+    },
+    {
+      'title': 'Data Science',
+      'category': 'Technology',
+      'duration': '15 weeks',
+      'level': 'Advanced',
+      'icon': Icons.analytics,
+      'color': Colors.blue,
+      'instructor': 'Sarah Wilson',
+      'rating': 4.7,
+      'students': 2034,
+      'price': '\$99.99',
+      'lessons': 15,
     },
   ];
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'All Programs',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[800],
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'All Programs',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
-          SizedBox(height: 8),
-          Text(
-            'Browse all available learning programs',
-            style: TextStyle(
-              color: Colors.grey[600],
-            ),
-          ),
-          SizedBox(height: 24),
-          ...allPrograms.map((program) => _buildProgramCard(program)),
-        ],
+        ),
+        backgroundColor: Colors.purple,
+        elevation: 0,
+      ),
+      body: ListView.builder(
+        padding: EdgeInsets.all(16),
+        itemCount: allPrograms.length,
+        itemBuilder: (context, index) {
+          return _buildProgramCard(allPrograms[index], context);
+        },
       ),
     );
   }
 
-  Widget _buildProgramCard(Map<String, dynamic> program) {
+  Widget _buildProgramCard(Map<String, dynamic> program, BuildContext context) {
     return Card(
       margin: EdgeInsets.only(bottom: 16),
       elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: ListTile(
         leading: Container(
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Colors.purple, Colors.pink],
-            ),
+            color: program['color'].withOpacity(0.2),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Icon(program['icon'], color: Colors.white),
+          child: Icon(program['icon'], color: program['color']),
         ),
         title: Text(
           program['title'],
@@ -97,7 +124,14 @@ class ProgramsTab extends StatelessWidget {
         ),
         trailing: Icon(Icons.arrow_forward_ios, size: 16),
         onTap: () {
-          // Navigate to program details
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProgramDetailsScreen(
+                program: program,
+              ),
+            ),
+          );
         },
       ),
     );

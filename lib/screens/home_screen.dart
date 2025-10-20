@@ -1,6 +1,7 @@
 // home_screen.dart
 
-import 'package:excelerate_hub/screens/program_tab.dart';
+
+import 'package:exclelerate_learning_hub/screens/program_tab.dart';
 import 'package:flutter/material.dart';
 
 import 'home_tabs.dart';
