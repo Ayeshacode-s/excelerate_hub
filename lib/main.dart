@@ -42,13 +42,13 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 2));
     
     if (hasSeenOnboarding) {
-      // If user has seen onboarding, go directly to auth
+      
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => AuthScreen()),
       );
     } else {
-      // If user hasn't seen onboarding, show onboarding first
+     
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => OnboardingScreen()),
