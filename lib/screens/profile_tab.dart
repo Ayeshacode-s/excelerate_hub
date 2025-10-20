@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // This container provides the gradient background for the whole tab.
+
     return Container(
-      // The gradient background provides a modern and visually appealing look.
+    
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -17,7 +17,7 @@ class ProfileTab extends StatelessWidget {
         ),
       ),
       child: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(16, 40, 16, 16), // Added top padding
+        padding: EdgeInsets.fromLTRB(16, 40, 16, 16), 
         child: Column(
           children: [
             _buildProfileHeader(),
@@ -55,7 +55,7 @@ class ProfileTab extends StatelessWidget {
           children: [
             Row(
               children: [
-                // The CircleAvatar now has a transparent background and a white icon.
+              
                 CircleAvatar(
                   radius: 40,
                   backgroundColor: Colors.white.withOpacity(0.2),
@@ -70,7 +70,7 @@ class ProfileTab extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Text is now white for better readability on the dark gradient.
+                 
                       Text(
                         'John Doe',
                         style: TextStyle(
@@ -90,7 +90,7 @@ class ProfileTab extends StatelessWidget {
                     ],
                   ),
                 ),
-                // The edit icon is also updated for consistency.
+               
                 IconButton(
                   icon: Icon(Icons.edit_outlined, color: Colors.white.withOpacity(0.8)),
                   onPressed: () {},
@@ -98,7 +98,7 @@ class ProfileTab extends StatelessWidget {
               ],
             ),
             SizedBox(height: 16),
-            // The Chip has been restyled to match the glassmorphism theme.
+           
             Chip(
               avatar: Icon(Icons.school_outlined, color: Colors.white.withOpacity(0.8), size: 18),
               label: Text('Intermediate Learner'),
@@ -129,7 +129,7 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
-  // Stat items have updated typography for a cleaner, more modern style.
+
   Widget _buildStatItem(String value, String label) {
     return Column(
       children: [
@@ -156,7 +156,7 @@ class ProfileTab extends StatelessWidget {
   }
 
   Widget _buildMenuSection() {
-    // Menu items now use more vibrant accent colors and outlined icons.
+  
     final menuItems = [
       {'icon': Icons.settings_outlined, 'title': 'Settings', 'color': Colors.cyanAccent},
       {'icon': Icons.help_outline, 'title': 'Help & Support', 'color': Colors.lightGreenAccent},
@@ -195,7 +195,7 @@ class ProfileTab extends StatelessWidget {
                   // Handle menu item tap
                 },
               ),
-              // A subtle divider separates the list items.
+
               if (!isLastItem)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
