@@ -44,7 +44,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          // Skip Button (Top Right)
+          // Skip Button 
           Align(
             alignment: Alignment.topRight,
             child: Padding(
@@ -150,7 +150,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _completeOnboarding() {
-    // Save onboarding completion status (you can use SharedPreferences)
+    
     // SharedPreferences.getInstance().then((prefs) {
     //   prefs.setBool('hasSeenOnboarding', true);
     // });
