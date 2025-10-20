@@ -233,7 +233,7 @@ class _AuthScreenState extends State<AuthScreen> {
             
             SizedBox(height: 24),
             
-            // Sign In/Up Button
+            
             SizedBox(
               width: double.infinity,
               height: 56,
@@ -446,7 +446,7 @@ class _AuthScreenState extends State<AuthScreen> {
           onTap: _isLoading ? null : () {
             setState(() {
               _isLogin = !_isLogin;
-              // Clear form when switching
+              
               if (!_isLogin) {
                 _confirmPasswordController.clear();
               }
@@ -548,31 +548,27 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   void _handleAuth() async {
-    // Validate form
+   
     if (!_formKey.currentState!.validate()) {
       return;
     }
 
     setState(() => _isLoading = true);
 
-    // Simulate API call
     await Future.delayed(Duration(seconds: 2));
 
     setState(() => _isLoading = false);
 
-    // Successful authentication
     _navigateToAppropriateScreen();
   }
 
   void _handleSocialLogin(String provider) async {
     setState(() => _isLoading = true);
-    
-    // Simulate social login
+
     await Future.delayed(Duration(seconds: 2));
     
     setState(() => _isLoading = false);
-    
-    // Show success message
+   
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Signed in with $provider'),
@@ -580,19 +576,19 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
     
-    // Navigate after social login
+    
     _navigateToAppropriateScreen();
   }
 
   void _navigateToAppropriateScreen() {
     if (_isLearner) {
-      // Navigate to Learner Home Screen
+      
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );
     } else {
-      // Navigate to Admin Dashboard
+     
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => AdminDashboard()),
