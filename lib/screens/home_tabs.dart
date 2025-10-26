@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'feedback_screen.dart';
+
 class HomeTab extends StatelessWidget {
   final Function(int) onTabChange; // Callback to change tabs
 
@@ -497,10 +499,12 @@ class HomeTab extends StatelessWidget {
                 child: _buildQuickAccessCard(
                   'Submit Feedback',
                   Icons.feedback_outlined,
-                  Colors.pink,
-                  () {
-                    // Show feedback dialog or navigate to feedback screen
-                    _showFeedbackDialog(context);
+                  Colors.purple,
+                      () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FeedbackScreen()),
+                    );
                   },
                 ),
               ),

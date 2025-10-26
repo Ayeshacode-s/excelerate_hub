@@ -36,7 +36,7 @@ class _AuthScreenState extends State<AuthScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background Gradient
+
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -54,7 +54,7 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Back Button (only show if not coming from splash)
+
                   if (Navigator.of(context).canPop())
                     IconButton(
                       icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -91,7 +91,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   _buildAuthForm(),
                   SizedBox(height: 24),
                   
-                  // Switch between Login/Signup
+                  //  Login/Signup
                   _buildAuthSwitch(),
                   SizedBox(height: 20),
                   

@@ -1,62 +1,44 @@
-import 'package:exclelerate_learning_hub/screens/program_listing_screen.dart';
+// lib/screens/programs_tab.dart
 import 'package:flutter/material.dart';
+import 'package:exclelerate_learning_hub/services/api_service.dart';
+import 'program_details_screen.dart'; // Make sure this import is correct
 
+class ProgramsTab extends StatefulWidget {
+  @override
+  _ProgramsTabState createState() => _ProgramsTabState();
+}
 
-class ProgramsTab extends StatelessWidget {
-  final List<Map<String, dynamic>> allPrograms = [
-    {
-      'title': 'Mobile Development',
-      'category': 'Technology',
-      'duration': '12 weeks',
-      'level': 'Intermediate',
-      'icon': Icons.phone_android,
-      'color': Colors.purple,
-      'instructor': 'John Doe',
-      'rating': 4.8,
-      'students': 1247,
-      'price': '\$79.99',
-      'lessons': 12,
-    },
-    {
-      'title': 'Digital Marketing',
-      'category': 'Business',
-      'duration': '8 weeks',
-      'level': 'Beginner',
-      'icon': Icons.trending_up,
-      'color': Colors.pink,
-      'instructor': 'Jane Smith',
-      'rating': 4.6,
-      'students': 892,
-      'price': '\$69.99',
-      'lessons': 8,
-    },
-    {
-      'title': 'Graphic Design',
-      'category': 'Design',
-      'duration': '10 weeks',
-      'level': 'All Levels',
-      'icon': Icons.graphic_eq,
-      'color': Colors.deepPurple,
-      'instructor': 'Mike Johnson',
-      'rating': 4.9,
-      'students': 1563,
-      'price': '\$89.99',
-      'lessons': 10,
-    },
-    {
-      'title': 'Data Science',
-      'category': 'Technology',
-      'duration': '15 weeks',
-      'level': 'Advanced',
-      'icon': Icons.analytics,
-      'color': Colors.blue,
-      'instructor': 'Sarah Wilson',
-      'rating': 4.7,
-      'students': 2034,
-      'price': '\$99.99',
-      'lessons': 15,
-    },
-  ];
+class _ProgramsTabState extends State<ProgramsTab> {
+  List<Map<String, dynamic>> _programs = [];
+  bool _isLoading = true;
+  String _error = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPrograms();
+  }
+
+  Future<void> _loadPrograms() async {
+    try {
+      setState(() {
+        _isLoading = true;
+        _error = '';
+      });
+
+      final programs = await ApiService.getPrograms();
+
+      setState(() {
+        _programs = programs;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _error = 'Failed to load programs. Please try again.';
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,18 +53,102 @@ class ProgramsTab extends StatelessWidget {
         ),
         backgroundColor: Colors.purple,
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: _loadPrograms,
+          ),
+        ],
       ),
-      body: ListView.builder(
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    if (_isLoading) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Loading programs...',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (_error.isNotEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.error_outline,
+              size: 64,
+              color: Colors.red,
+            ),
+            SizedBox(height: 16),
+            Text(
+              _error,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[600],
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _loadPrograms,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Try Again'),
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (_programs.isEmpty) {
+      return Center(
+        child: Text(
+          'No programs available',
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey[600],
+          ),
+        ),
+      );
+    }
+
+    return RefreshIndicator(
+      onRefresh: _loadPrograms,
+      color: Colors.purple,
+      child: ListView.builder(
         padding: EdgeInsets.all(16),
-        itemCount: allPrograms.length,
+        itemCount: _programs.length,
         itemBuilder: (context, index) {
-          return _buildProgramCard(allPrograms[index], context);
+          return _buildProgramCard(_programs[index], context);
         },
       ),
     );
   }
 
   Widget _buildProgramCard(Map<String, dynamic> program, BuildContext context) {
+    // Convert API data to safe format
+    final IconData programIcon = ApiService.getIconFromString(program['icon'] ?? 'school');
+    final Color programColor = ApiService.getColorFromString(program['color'] ?? 'purple');
+
     return Card(
       margin: EdgeInsets.only(bottom: 16),
       elevation: 2,
@@ -94,30 +160,30 @@ class ProgramsTab extends StatelessWidget {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            color: program['color'].withOpacity(0.2),
+            color: programColor.withOpacity(0.2),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Icon(program['icon'], color: program['color']),
+          child: Icon(programIcon, color: programColor),
         ),
         title: Text(
-          program['title'],
+          program['title'] ?? 'Unknown Program',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 4),
-            Text(program['category']),
+            Text(program['category'] ?? 'General'),
             SizedBox(height: 4),
             Row(
               children: [
                 Icon(Icons.timer, size: 14, color: Colors.grey),
                 SizedBox(width: 4),
-                Text(program['duration']),
+                Text(program['duration'] ?? 'Duration not specified'),
                 SizedBox(width: 16),
                 Icon(Icons.school, size: 14, color: Colors.grey),
                 SizedBox(width: 4),
-                Text(program['level']),
+                Text(program['level'] ?? 'All Levels'),
               ],
             ),
           ],

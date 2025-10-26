@@ -329,7 +329,6 @@ class AdminDashboard extends StatelessWidget {
   }
 
   void _logout(BuildContext context) {
-    // Navigate back to auth screen
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => AuthScreen()),
