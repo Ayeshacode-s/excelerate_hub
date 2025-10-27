@@ -166,4 +166,17 @@ By the end of the project, **Excelerate Hub** will demonstrate:
 - A structured GitHub repository with commits, setup guide, and visuals.  
 - Practical understanding of real-world app development workflows.
 
+## Week 3 Updates
 
+### API Integration
+- Program Listing and Details screens now fetch data from mock API
+- Added ApiService with simulated network calls
+
+### Forms
+- Implemented Feedback form with full validation
+- Includes: name, email, star rating, and message fields
+
+### User Experience
+- Loading indicators during API submissions
+- Error handling with SnackBar notifications
+- Form validation with real-time feedback
